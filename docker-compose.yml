@@ -1,0 +1,45 @@
+# docker compose  --- 노출포트 16379 로 함
+version: '3'
+services:
+  # redis:
+  #   container_name: redis
+  #   image: 'redis:7'
+  #   environment:
+  #     - ALLOW_EMPTY_PASSWORD=yes
+  #     - REDIS_PASSWORD=
+  #   ports:
+  #     - '16379:6379'
+  #   networks:
+  #     - redis
+  #   restart: always
+  #   command: redis-server --appendonly yes --appendfsync everysec
+
+  # elasticsearch:
+  #   container_name: elasticsearch
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.3.3
+  #   environment:
+  #     - discovery.type=single-node
+  #     - http.port=9200
+  #     - transport.port=9300
+  #     - xpack.security.enabled=false
+  #     - ES_JAVA_OPTS=-Xms512m -Xmx512m
+  #   ports:
+  #     - 9200:9200
+  #     - 9300:9300
+  #   volumes:
+  #     - ../Elasticsearch:/usr/share/elasticsearch/config/analysis
+  #   #command: ./bin/elasticsearch-plugin install analysis-nori
+  #   restart: always
+  postgres:
+    container_name: postgres
+    image: postgres:14
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=chatbot1!
+      - POSTGRES_DB=app
+    ports:
+      - 15432:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    user: "${USER_ID}:${GROUP_ID}"
