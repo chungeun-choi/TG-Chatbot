@@ -1,5 +1,5 @@
 import sys
-sys.path.append("/Users/cucuridas/Desktop/project/TG-Chatbot")
+sys.path.append("/Users/cucuridas/Desktop/project/TG-Chatbot2")
 
 from fastapi import FastAPI
 from app.api.v1.api import api_router
