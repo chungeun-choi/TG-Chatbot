@@ -123,3 +123,14 @@ def update_user(
         )
     user = service.user.update(db, db_obj=user, obj_in=user_in)
     return user
+
+@router.delete("/{user_id}",response_model=schemas.User)
+def delete_user(
+    *,
+    db = Depends(deps.get_db),
+    user_id: int,
+    user_in: schemas.UserUpdate,
+    current_user: models.User = Depends(deps.get_current_active_superuser),
+) -> Any:
+    user = service.user.remove(db, user_id)
+    return user

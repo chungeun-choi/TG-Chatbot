@@ -9,13 +9,13 @@ class UserBase(BaseModel):
     is_active: Optional[bool] = True
     is_superuser: bool = False
     full_name: Optional[str] = None
+    team_id: Optional[int] = None
 
 
 # Properties to receive via API on creation
 class UserCreate(UserBase):
     email: EmailStr
     password: str
-
 
 # Properties to receive via API on update
 class UserUpdate(UserBase):
