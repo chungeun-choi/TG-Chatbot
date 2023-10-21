@@ -12,5 +12,6 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean(), default=True)
     is_superuser = Column(Boolean(), default=False)
-    team = relationship("Team",lazy="joined")
+    team_id = Column(Integer, ForeignKey("team.id"))
+    team = relationship("Team", back_populates="users")
 
