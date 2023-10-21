@@ -1,7 +1,9 @@
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Boolean, Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 from app.db.base_class import Base
+
 
 class User(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
@@ -10,4 +12,5 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean(), default=True)
     is_superuser = Column(Boolean(), default=False)
-    team_id = Column(Integer, ForeignKey("team.id"))
+    team = relationship("Team",lazy="joined")
+
