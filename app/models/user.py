@@ -14,4 +14,3 @@ class User(Base):
     is_superuser = Column(Boolean(), default=False)
     team_id = Column(Integer, ForeignKey("team.id"))
     team = relationship("Team", back_populates="users")
-

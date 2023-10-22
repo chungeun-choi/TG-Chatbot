@@ -1,4 +1,5 @@
 import sys
+
 sys.path.append("/Users/cucuridas/Desktop/project/TG-Chatbot2")
 
 from fastapi import FastAPI
@@ -6,8 +7,10 @@ from app.api.v1.api import api_router
 from app.db.init_db import *
 from app.db.session import *
 import uvicorn
+
+
 def createApp() -> FastAPI:
-    #WebexHook().addHook()
+    # WebexHook().addHook()
     db = SessionLocal()
     init_db(db)
     fastApiServer = FastAPI()
@@ -16,6 +19,7 @@ def createApp() -> FastAPI:
 
 
 app = createApp()
+
 
 class Server(uvicorn.Server):
     """Customized uvicorn.Server
@@ -38,6 +42,7 @@ def main():
             port=8000,
         )
     )
+
 
 if __name__ == "__main__":
     main()

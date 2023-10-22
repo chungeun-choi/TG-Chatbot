@@ -1,4 +1,5 @@
 import sys
+
 sys.path.append("/Users/cucuridas/Desktop/project/TG-Chatbot")
 
 import logging
@@ -96,7 +97,9 @@ def generate_password_reset_token(email: str) -> str:
     expires = now + delta
     exp = expires.timestamp()
     encoded_jwt = jwt.encode(
-        {"exp": exp, "nbf": now, "sub": email}, settings.SECRET_KEY, algorithm="HS256",
+        {"exp": exp, "nbf": now, "sub": email},
+        settings.SECRET_KEY,
+        algorithm="HS256",
     )
     return encoded_jwt
 

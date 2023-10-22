@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 
 from app.service.base import CRUDBase
 from app.models.tgday import TGDay
-from app.schemas.tgday import TGDayCreate,TGDayUpdate
+from app.schemas.tgday import TGDayCreate, TGDayUpdate
 
 
 class CRUDTGDay(CRUDBase[TGDay, TGDayCreate, TGDayUpdate]):
